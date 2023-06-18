@@ -1,0 +1,82 @@
+.bottom-navigation-container {
+  position: relative;
+  height: 100%;
+}
+
+.bottom-navigation-container ul {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 720px;
+  z-index: 1;
+  box-shadow: 0 0 10px 0 rgba(5, 44, 82, 0.1);
+}
+
+.bottom-navigation-basic-light-mode ul {
+  background-color: #fff;
+}
+
+.bottom-navigation-basic-dark-mode ul {
+  background-color: #1b1e21;
+}
+
+.bottom-navigation-container ul li {
+  text-align: center;
+  flex: 1;
+}
+.bottom-navigation-container ul li a {
+  display: block;
+  height: 56px;
+  cursor: pointer;
+}
+.bottom-navigation-container ul li a.home {
+  background: url("../assets/button_navigation_home_off.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.home.on {
+  background: url("../assets/button_navigation_home_on.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.zzim {
+  background: url("../assets/button_navigation_heart_off.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.zzim.on {
+  background: url("../assets/button_navigation_heart_on.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.map {
+  background: url("../assets/button_navigation_map_off.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.map.on {
+  background: url("../assets/button_navigation_map_on.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.magazine {
+  background: url("../assets/button_navigation_magazine_off.svg") no-repeat
+    center center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.magazine.on {
+  background: url("../assets/button_navigation_magazine_on.svg") no-repeat
+    center center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.more {
+  background: url("../assets/button_navigation_more_off.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+.bottom-navigation-container ul li a.more.on {
+  background: url("../assets/button_navigation_more_on.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
