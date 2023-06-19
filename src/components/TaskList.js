@@ -1,126 +1,77 @@
-import React from "react";
-import Task from "./Task";
 import PropTypes from "prop-types";
 
-import TaskList from "./TaskList";
-import * as TaskStories from "./Task.stories";
+import React from "react";
+import Task from "./Task";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTaskState } from "../lib/store";
 
-import { Provider } from "react-redux";
-
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-// A super-simple mock of the state of the store
-export const MockedState = {
-  tasks: [
-    { ...TaskStories.Default.args.task, id: "1", title: "Task 1" },
-    { ...TaskStories.Default.args.task, id: "2", title: "Task 2" },
-    { ...TaskStories.Default.args.task, id: "3", title: "Task 3" },
-    { ...TaskStories.Default.args.task, id: "4", title: "Task 4" },
-    { ...TaskStories.Default.args.task, id: "5", title: "Task 5" },
-    { ...TaskStories.Default.args.task, id: "6", title: "Task 6" },
-  ],
-  status: "idle",
-  error: null,
-};
-
-// A super-simple mock of a redux store
-const Mockstore = ({ taskboxState, children }) => (
-  <Provider
-    store={configureStore({
-      reducer: {
-        taskbox: createSlice({
-          name: "taskbox",
-          initialState: taskboxState,
-          reducers: {
-            updateTaskState: (state, action) => {
-              const { id, newTaskState } = action.payload;
-              const task = state.tasks.findIndex((task) => task.id === id);
-              if (task >= 0) {
-                state.tasks[task].state = newTaskState;
-              }
-            },
-          },
-        }).reducer,
-      },
-    })}
-  >
-    {children}
-  </Provider>
-);
-
-export default {
-  component: TaskList,
-  title: "TaskList",
-  decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
-  excludeStories: /.*MockedState$/,
-};
-
-const Template = () => <TaskList />;
-
-export const Default = Template.bind({});
-Default.decorators = [
-  (story) => <Mockstore taskboxState={MockedState}>{story()}</Mockstore>,
-];
-
-export const WithPinnedTasks = Template.bind({});
-WithPinnedTasks.decorators = [
-  (story) => {
-    const pinnedtasks = [
-      ...MockedState.tasks.slice(0, 5),
-      { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" },
+export default function TaskList() {
+  // We're retrieving our state from the store
+  const tasks = useSelector((state) => {
+    const tasksInOrder = [
+      ...state.taskbox.tasks.filter((t) => t.state === "TASK_PINNED"),
+      ...state.taskbox.tasks.filter((t) => t.state !== "TASK_PINNED"),
     ];
-
-    return (
-      <Mockstore
-        taskboxState={{
-          ...MockedState,
-          tasks: pinnedtasks,
-        }}
-      >
-        {story()}
-      </Mockstore>
+    const filteredTasks = tasksInOrder.filter(
+      (t) => t.state === "TASK_INBOX" || t.state === "TASK_PINNED"
     );
-  },
-];
+    return filteredTasks;
+  });
 
-export const Loading = Template.bind({});
-Loading.decorators = [
-  (story) => (
-    <Mockstore
-      taskboxState={{
-        ...MockedState,
-        status: "loading",
-      }}
-    >
-      {story()}
-    </Mockstore>
-  ),
-];
+  const { status } = useSelector((state) => state.taskbox);
 
-export const Empty = Template.bind({});
-Empty.decorators = [
-  (story) => (
-    <Mockstore
-      taskboxState={{
-        ...MockedState,
-        tasks: [],
-      }}
-    >
-      {story()}
-    </Mockstore>
-  ),
-];
+  const dispatch = useDispatch();
 
-TaskList.propTypes = {
-  /** Checks if it's in loading state */
-  loading: PropTypes.bool,
-  /** The list of tasks */
-  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
-  /** Event to change the task to pinned */
-  onPinTask: PropTypes.func,
-  /** Event to change the task to archived */
-  onArchiveTask: PropTypes.func,
-};
-TaskList.defaultProps = {
-  loading: false,
-};
+  const pinTask = (value) => {
+    // We're dispatching the Pinned event back to our store
+    dispatch(updateTaskState({ id: value, newTaskState: "TASK_PINNED" }));
+  };
+  const archiveTask = (value) => {
+    // We're dispatching the Archive event back to our store
+    dispatch(updateTaskState({ id: value, newTaskState: "TASK_ARCHIVED" }));
+  };
+  const LoadingRow = (
+    <div className="loading-item">
+      <span className="glow-checkbox" />
+      <span className="glow-text">
+        <span>Loading</span> <span>cool</span> <span>state</span>
+      </span>
+    </div>
+  );
+  if (status === "loading") {
+    return (
+      <div className="list-items" data-testid="loading" key={"loading"}>
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+      </div>
+    );
+  }
+  if (tasks.length === 0) {
+    return (
+      <div className="list-items" key={"empty"} data-testid="empty">
+        <div className="wrapper-message">
+          <span className="icon-check" />
+          <div className="title-message">You have no tasks</div>
+          <div className="subtitle-message">Sit back and relax</div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="list-items" data-testid="success" key={"success"}>
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          task={task}
+          onPinTask={(task) => pinTask(task)}
+          onArchiveTask={(task) => archiveTask(task)}
+        />
+      ))}
+    </div>
+  );
+}
