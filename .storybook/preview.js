@@ -1,5 +1,14 @@
 import React from "react";
 import { GlobalStyle } from "../src/shared/global";
+// import * as NextImage from "next/image";
+import * as NextImage from "next/image";
+
+const OriginalNextImage = NextImage.default;
+
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+});
 
 export const decorators = [
   (Story) => (
@@ -19,6 +28,10 @@ export const parameters = {
     },
   },
 };
+
+// NextImage.defaultProps = {
+//   unoptimized: true,
+// };
 
 // export const parameters = {
 //   actions: { argTypesRegex: '^on[A-Z].*' },

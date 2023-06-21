@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./styledComponentsBottomNavigation.css";
 import { styled } from "styled-components";
 
 /**
@@ -9,6 +8,7 @@ import { styled } from "styled-components";
 
 const TestBox = styled.div`
   font-size: ${(props) => props.test};
+  background: url("../assets/badge_hot.svg");
 `;
 
 export const StyledComponentsBottomNavigation = ({
