@@ -78,7 +78,7 @@ const IconItem = styled.a`
   &.home {
     background-image: ${(props) =>
       props.selectNav === "home"
-        ? `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_home_on.svg")`
+        ? `url("../../stories/assets/button_navigation_home_on.svg")`
         : `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_home_off.svg")`};
     background-repeat: no-repeat;
     background-position: center;

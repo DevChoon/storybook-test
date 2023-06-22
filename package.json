@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006 -s ./public",
     "build-storybook": "storybook build s public",
-    "build-storybookBabel": "cross-env BABEL_ENV=production babel src -d dist"
+    "build-storybookBabel": "cross-env BABEL_ENV=production babel src -d dist",
+    "chromatic": "npx chromatic --project-token=chpt_d138b5f43bd0c07"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -38,11 +39,14 @@
     "@storybook/testing-library": "^0.1.0",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^8.3.0",
+    "chromatic": "^6.19.8",
     "cross-env": "^7.0.3",
     "eslint-plugin-storybook": "^0.6.12",
     "postcss": "^8.4.24",
     "react-test-renderer": "^18.2.0",
     "storybook": "^7.0.20",
     "tailwindcss": "^3.3.2"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "storybook-test-repo@0.1.0"
 }
