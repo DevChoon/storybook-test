@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./task.css";
 
 export default function Task({
   task: { id, title, state },
@@ -23,6 +24,7 @@ export default function Task({
         />
       </label>
       <div className="title">
+        <div className="test-image">a</div>
         <input
           type="text"
           value={title}

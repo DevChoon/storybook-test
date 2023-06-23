@@ -4511,10 +4511,10 @@
   "resolved" "https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz"
   "version" "2.0.0"
 
-"chromatic@^6.19.8":
-  "integrity" "sha512-cvQAd/BkhRscXYbHuwIYwkmqzgpLz50maBGvUDa+WdfpoxzYrUvG2uZ1YU3tS857dAwMuTL5wUFiawiffDIKvQ=="
-  "resolved" "https://registry.npmjs.org/chromatic/-/chromatic-6.19.8.tgz"
-  "version" "6.19.8"
+"chromatic@^6.19.9":
+  "integrity" "sha512-UHrPbPoLnJwd063cRSO0U865VhcATykpMiHsAnNFz5EFRsBvM9wefqyS2Z6W8Ti9J7Fjrf4MV4PA+Q5k2lhFfQ=="
+  "resolved" "https://registry.npmjs.org/chromatic/-/chromatic-6.19.9.tgz"
+  "version" "6.19.9"
 
 "chrome-trace-event@^1.0.2":
   "integrity" "sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg=="

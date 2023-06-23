@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { styled } from "styled-components";
 import { onChangeNavigation } from "./BottomNavigationSlice";
+import "./bottomNavigation.css";
 
 export const BottomNavigation = ({ display }) => {
   const selectNav = useSelector((state) => state.selectNavigation.value);
@@ -16,21 +17,21 @@ export const BottomNavigation = ({ display }) => {
       <BottomNavigationContainer display={display}>
         <li>
           <IconItem
-            className="home"
+            className={`home icon ${selectNav === "home" ? "on" : "off"}`}
             onClick={() => handleClick("home")}
             selectNav={selectNav}
           />
         </li>
         <li>
           <IconItem
-            className="zzim"
+            className={`zzim icon ${selectNav === "zzim" ? "on" : "off"}`}
             onClick={() => handleClick("zzim")}
             selectNav={selectNav}
           />
         </li>
         <li>
           <IconItem
-            className="map"
+            className={`map icon ${selectNav === "map" ? "on" : "off"}`}
             onClick={() => handleClick("map")}
             selectNav={selectNav}
           />
@@ -78,7 +79,7 @@ const IconItem = styled.a`
   &.home {
     background-image: ${(props) =>
       props.selectNav === "home"
-        ? `url("http://localhost:6006/assets/button_navigation_home_on.svg")`
+        ? `url("/public/assets/button_navigation_home_on.svg")`
         : `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_home_off.svg")`};
     background-repeat: no-repeat;
     background-position: center;

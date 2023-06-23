@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { selectNavigation } from "src/components/BottomNavigation/BottomNavigationSlice";
+import { selectNavigation } from "src/stories/BottomNavigations/BottomNavigationSlice";
 
 export const bottomNavigationStore = configureStore({
   reducer: {

@@ -1,0 +1,35 @@
+.home.on {
+  background: url("../assets/button_navigation_home_on.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+
+.home.off {
+  background: url("../assets/button_navigation_home_off.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+
+.zzim.on {
+  background: url("../assets/button_navigation_heart_on.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+
+.zzim.off {
+  background: url("../assets/button_navigation_heart_off.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+
+.map.on {
+  background: url("../assets/button_navigation_map_on.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+
+.map.off {
+  background: url("../assets/button_navigation_map_off.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
