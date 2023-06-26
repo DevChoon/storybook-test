@@ -33,3 +33,25 @@
     center;
   background-size: 90px 56px;
 }
+.magazine.on {
+  background: url("../assets/button_navigation_magazine_on.svg") no-repeat
+    center center;
+  background-size: 90px 56px;
+}
+
+.magazine.off {
+  background: url("../assets/button_navigation_magazine_off.svg") no-repeat
+    center center;
+  background-size: 90px 56px;
+}
+.more.on {
+  background: url("../assets/button_navigation_more_on.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}
+
+.more.off {
+  background: url("../assets/button_navigation_more_off.svg") no-repeat center
+    center;
+  background-size: 90px 56px;
+}

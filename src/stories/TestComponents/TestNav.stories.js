@@ -1,14 +1,12 @@
 import React from "react";
-import { BottomNavigation } from "./BottomNavigation";
 import { Provider } from "react-redux";
 import { bottomNavigationStore } from "src/lib/bottomNavigationStore";
-import { withPseudo } from "storybook-addon-designs/pseudo";
+import { TestNav } from "./TestNav";
 
 export default {
-  title: "BottomNavigation",
-  component: BottomNavigation,
-  // decorators: [(story) => <div className="test">{story()}</div>],
-  decorators: [withPseudo],
+  title: "TestNav",
+  component: TestNav,
+  decorators: [(story) => <div className="test">{story()}</div>],
   tags: ["autodocs"],
   argTypes: {
     display: {
@@ -18,7 +16,7 @@ export default {
   },
 };
 
-const Template = (args) => <BottomNavigation {...args} />;
+const Template = (args) => <TestNav {...args} />;
 
 export const LightMode = Template.bind({});
 LightMode.args = {

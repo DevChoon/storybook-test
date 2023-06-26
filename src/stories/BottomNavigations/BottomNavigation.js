@@ -38,14 +38,16 @@ export const BottomNavigation = ({ display }) => {
         </li>
         <li>
           <IconItem
-            className="magazine"
+            className={`magazine icon ${
+              selectNav === "magazine" ? "on" : "off"
+            }`}
             onClick={() => handleClick("magazine")}
             selectNav={selectNav}
           />
         </li>
         <li>
           <IconItem
-            className="more"
+            className={`more icon ${selectNav === "more" ? "on" : "off"}`}
             onClick={() => handleClick("more")}
             selectNav={selectNav}
           />
@@ -75,50 +77,4 @@ const IconItem = styled.a`
   display: block;
   height: 56px;
   cursor: pointer;
-
-  &.home {
-    background-image: ${(props) =>
-      props.selectNav === "home"
-        ? `url("/public/assets/button_navigation_home_on.svg")`
-        : `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_home_off.svg")`};
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 90px 56px;
-  }
-  &.zzim {
-    background-image: ${(props) =>
-      props.selectNav === "zzim"
-        ? `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_heart_on.svg")`
-        : `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_heart_off.svg")`};
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 90px 56px;
-  }
-  &.map {
-    background-image: ${(props) =>
-      props.selectNav === "map"
-        ? `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_map_on.svg")`
-        : `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_map_off.svg")`};
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 90px 56px;
-  }
-  &.magazine {
-    background-image: ${(props) =>
-      props.selectNav === "magazine"
-        ? `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_magazine_on.svg")`
-        : `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_magazine_off.svg")`};
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 90px 56px;
-  }
-  &.more {
-    background-image: ${(props) =>
-      props.selectNav === "more"
-        ? `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_more_on.svg")`
-        : `url("http://localhost:6006/static/media/src/stories/assets/button_navigation_more_off.svg")`};
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 90px 56px;
-  }
 `;
